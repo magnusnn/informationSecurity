@@ -80,6 +80,65 @@ For numbers of a similar size, and for algorithms we currently know about:
 
 - factorising numbers is harder than finding prime numbers;
 
+For which of the following functions f(m) is it true that f(m) = O(m^2)
+
+- f(m) = m;
+- f(m) = 100m;
+- f(m) = 100m^2 + 100m + 100;
+- all of the above.
+
+##quiz 4
+
+Let g be a generator for the integers modulo p. The discrete logarithm problem is:
+
+- given y, find x with y = g^x mod p;
+
+With regard to the security of the Diffie-Hellman protocol we know that:
+
+- an attacker who can find discrete logarithms can break the protocol.
+
+A major limitation of the basic Diffie-Hellman protocol is:
+
+- the messages are not authenticated;
+
+In the Elgamal cryptosystem:
+
+- the ciphertext is twice the size of the plaintext;
+
+The best algorithm currently known to solve the elliptic curve discrete logarithm:
+
+- is exponential in the length of the parameters.
+
+A Diffie-Hellman key is ephemeral if:
+
+- it is used in only one run of the protocol;
+
+An elliptic curve point is:
+
+- a pair of elements (x,y) in some field.
+
+If full-scale quantum computers become available then:
+
+	1 the RSA cryptosystem will be broken;
+	
+	2 the Diffie-Hellman protocol will be broken;
+	
+	3 the ElGamal encryption algorithm will be broken;
+	
+- all of the above.
+
+For the same level of security we should choose:
+
+	x  all of the above.
+
+- the key size for RSA to be longer than the key size for elliptic curve based schemes;
+
+
+One difference between ElGamal encryption and RSA encryption is that:
+
+	x RSA provides randomised encryption without padding while ElGamal encryption does not; 
+
+- the ElGamal encryption process requires two exponentiations while RSA encryption requires only one;
 
 
 
