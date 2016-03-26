@@ -66,7 +66,7 @@ A method of implementing one or more security services.
 #### Relating security services to mechanisms
 
 |Service \ mechanism         |encipherment   |digital signature  |access control |data integrity |Auth. exchange |padding    |routing control    |notarization   |
-|---                         |---            |---                |---            |---            |---            |---        |--                 |---            |
+|---                         |---            |---                |---            |---            |---            |---        |---                |---            |
 |Peer entity authentication  |y              |y                  |               |               |y              |           |                   |               |
 |Data origin authentication  |y              |y                  |               |               |               |           |                   |               |
 |Access control              |               |                   |y              |               |               |           |                   |               |
