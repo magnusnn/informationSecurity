@@ -65,16 +65,16 @@ A method of implementing one or more security services.
 
 #### Relating security services to mechanisms
 
-Service \ mechanism         |encipherment   |digital signature  |access control |data integrity |Auth. exchange |padding    |routing control    |notarization   |
----                         |---            |---                |---            |---            |---            |---        |--                 |---            |
-Peer entity authentication  |y              |y                  |               |               |y              |           |                   |               |
-Data origin authentication  |y              |y                  |               |               |               |           |                   |               |
-Access control              |               |                   |y              |               |               |           |                   |               |
-Data confidentiality        |y              |                   |               |               |               |           |y                  |               |
-Traffic Flow Confidentiality|y              |                   |               |               |               |y          |y                  |               |
-Data Integrity              |y              |y                  |               |y              |               |           |                   |               |
-Non repudiation             |               |y                  |               |y              |               |           |                   |y              |
-Availability                |               |                   |               |y              |y              |           |                   |               |
+|Service \ mechanism         |encipherment   |digital signature  |access control |data integrity |Auth. exchange |padding    |routing control    |notarization   |
+|---                         |---            |---                |---            |---            |---            |---        |--                 |---            |
+|Peer entity authentication  |y              |y                  |               |               |y              |           |                   |               |
+|Data origin authentication  |y              |y                  |               |               |               |           |                   |               |
+|Access control              |               |                   |y              |               |               |           |                   |               |
+|Data confidentiality        |y              |                   |               |               |               |           |y                  |               |
+|Traffic Flow Confidentiality|y              |                   |               |               |               |y          |y                  |               |
+|Data Integrity              |y              |y                  |               |y              |               |           |                   |               |
+|Non repudiation             |               |y                  |               |y              |               |           |                   |y              |
+|Availability                |               |                   |               |y              |y              |           |                   |               |
 
 ### Risk management
 A key tool in information security management
