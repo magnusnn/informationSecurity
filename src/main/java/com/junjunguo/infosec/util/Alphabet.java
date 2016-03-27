@@ -1,7 +1,7 @@
-package com.junjunguo.is.util;
+package com.junjunguo.infosec.util;
 
 /**
- * This file is part of informationSecurity.
+ * This file infosec part of informationSecurity.
  * <p/>
  * Created by <a href="http://junjunguo.com">GuoJunjun</a> on 08/02/16.
  */

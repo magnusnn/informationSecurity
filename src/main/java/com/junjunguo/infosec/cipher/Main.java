@@ -1,11 +1,11 @@
-package com.junjunguo.is.cipher;
+package com.junjunguo.infosec.cipher;
 
-import com.junjunguo.is.util.Alphabet;
+import com.junjunguo.infosec.util.Alphabet;
 
 import java.util.Scanner;
 
 /**
- * This file is part of informationSecurity.
+ * This file infosec part of informationSecurity.
  * <p/>
  * Created by <a href="http://junjunguo.com">GuoJunjun</a> on 08/02/16.
  */

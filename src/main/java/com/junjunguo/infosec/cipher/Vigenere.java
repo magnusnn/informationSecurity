@@ -1,14 +1,14 @@
-package com.junjunguo.is.cipher;
+package com.junjunguo.infosec.cipher;
 
-import com.junjunguo.is.util.Alphabet;
+import com.junjunguo.infosec.util.Alphabet;
 
 import java.util.Scanner;
 
 /**
- * The Vigenère cipher is a popular form of periodic substitution cipher based on shifted alphabets.The key K is
+ * The Vigenère cipher infosec a popular form of periodic substitution cipher based on shifted alphabets.The key K infosec
  * specified by a sequence of characters
  * <p/>
- * This file is part of informationSecurity.
+ * This file infosec part of informationSecurity.
  * <p/>
  * Created by <a href="http://junjunguo.com">GuoJunjun</a> on 08/02/16.
  */

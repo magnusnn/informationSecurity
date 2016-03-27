@@ -7,6 +7,10 @@ ISO security architecture definition:
 
 > “The term security is used in the sense of minimizing the vulnerabilities of assets and resources. An asset is anything of value. A vulnerability is any weakness that could be exploited to violate a system or the information it contains. A threat is a potential violation of security.”
 
+- **[OAuth.md](OAuth.md)**
+- **[Password.md](password.md)**
+
+
 Traditional definitions of information security are based on three information security goals:
 
 - **Confidentiality**: preventing unauthorised disclosure of information
@@ -189,29 +193,6 @@ Application-level security complements transport-level security. Application-lev
 - Applications MUST NOT implement questions and answers as they are contrary to most privacy regimes and ineffective
 - Applications SHOULD NOT rely on infrastructure authentication, such as REFERER headers or the client's DNS or IP address as these can be faked
 
-##### Password Guidelines
-**Passwords are intrinsically weak. Therefore, your application should encourage good password practices:**
-
-- Credentials should only traverse encrypted links
-- **Store the password in a strongly hashed and salted format to prevent rainbow table attacks.**
-- Pass phrases (long passwords over 20 characters in length) should be encouraged
-- Short passwords should be prohibited
-- Do not force folks to change passwords frequently as this results in the users writing the passwords down insecurely
-- Where suitable, try to share the credential with as many low value systems as possible to encourage one single high quality password
-- Allow expert users to store strong passwords in approved password managers. Encourage them to use unique random passwords for each service
-
-**Protect passwords**
-> Passwords are the primary means of authenticating users on the Web today. It is important that any Web site guard the passwords of its users carefully. This is especially important since users, when faced with many Web sites requiring passwords, tend to reuse passwords across sites.
-
-- Compromise of a password completely compromises a user. A site should never reveal a password to a user.
-- A valid user should already know the password; **sending it unnecessarily over the network gives the eavesdropping adversary more opportunity to sniff the password.**
-- Do **not store passwords in cleartext in your database**. User databases are routinely hacked, leaked or gleaned through SQL injection, and if you are storing raw, plaintext passwords, that is instant game over for your login security.
-
-- **[stack exchange: How to securely hash passwords?](http://security.stackexchange.com/questions/211/how-to-securely-hash-passwords/31846#31846)**
-- **[stack exchange: Token-based authentication - Securing the token](http://security.stackexchange.com/questions/19676/token-based-authentication-securing-the-token)**
-- **[stack overflow: How token-based authentication works](http://stackoverflow.com/questions/26777083/best-practice-for-rest-token-based-authentication-with-jax-rs-and-jersey)**
-
-
 ##### CAPTCHA
 **CAPTCHA (Completely automated Turing Tests To Tell Humans and Computers Apart) are illegal in any jurisdiction that prohibits discrimination against disabled citizens. This is essentially the entire world. Although CAPTCHAs seem useful, they are in fact, trivial to break using any of the following methods:**
 
@@ -220,7 +201,8 @@ Application-level security complements transport-level security. Application-lev
 - Pay someone to solve the CAPTCHAs. The current rate at the time of writing is $12 per 500 tests.
 - **Therefore implementing CAPTCHAs in your software is most likely to be illegal in at least a few countries, and worse - completely ineffective.**
 
-### [OAuth](OAuth.md)
+## [OAuth](OAuth.md)
+## [Password](password.md)
 
 #### [stack overflow: The definitive guide to form-based website authentication](http://stackoverflow.com/questions/549/the-definitive-guide-to-form-based-website-authentication/477578#477578)
 #### [stack exchange: Why use an authentication token instead of the username/password per request?](http://security.stackexchange.com/questions/63435/why-use-an-authentication-token-instead-of-the-username-password-per-request)
