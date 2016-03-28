@@ -52,17 +52,6 @@ public class PasswordHash {
         return hashOfInput.equals(saltAndPass[1]);
     }
 
-    //    private static String hash(String password, byte[] salt) throws Exception {
-    //        if (password == null || password.length() == 0)
-    //            throw new IllegalArgumentException("Empty passwords are not supported.");
-    //        SecretKeyFactory f = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
-    //        SecretKey key = f.generateSecret(new PBEKeySpec(
-    //                        password.toCharArray(), salt, iterations, desiredKeyLen)
-    //                                        );
-    //        return Base64.encodeBase64String(key.getEncoded());
-    //    }
-
-
     /**
      * Gets salted hash password for storing in database.
      *
@@ -90,16 +79,13 @@ public class PasswordHash {
      */
     public byte[] hashPassword(final char[] password, final byte[] salt, final int iterations,
             final int keyLength) throws Exception {
-        //        try {
+        // PBKDF2WithHmacSHA512 not supported in java version 1.7
+        // PBKDF2WithHmacSHA1   for java 1.7
         SecretKeyFactory skf  = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA512");
         PBEKeySpec       spec = new PBEKeySpec(password, salt, iterations, keyLength);
         SecretKey        key  = skf.generateSecret(spec);
         byte[]           res  = key.getEncoded();
         return res;
-
-        //        } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
-        //            throw new RuntimeException(e);
-        //        }
     }
 
     public static void main(String[] args) {
@@ -118,7 +104,7 @@ public class PasswordHash {
             h4 = ph.getSaltedHashPassword(p4);
             h5 = ph.getSaltedHashPassword(p5);
             System.out.println(p1 + "\n" + p2 + "\n" + p3 + "\n" + p4 + "\n" + p5);
-            System.out.println(h1 + "\n" + h2 + "\n" + h3 + "\n" + h4 + "\n" + h5);
+            System.out.println(h1 + "\n" + h2 + "\n" + h3 + "\n" + h4.length() + "\n" + h5.length());
             System.out.println(
                     ph.check(p1, h1) + "\n" + ph.check(p2, h2) + "\n" + ph.check(p2, h3) + "\n" + ph.check(p4, h1) +
                     "\n" + ph.check(p5, h2));
@@ -127,5 +113,4 @@ public class PasswordHash {
         }
         System.out.println();
     }
-
 }
