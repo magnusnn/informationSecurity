@@ -21,6 +21,7 @@ import java.security.GeneralSecurityException;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import java.security.spec.KeySpec;
+import java.util.UUID;
 
 /**
  * The type Encrypt password.
@@ -89,12 +90,19 @@ public class EncryptPassword {
      * @throws Exception the exception
      */
     public static void main(String[] args) throws Exception {
-        String          originalPassword = "secret";
         EncryptPassword en               = new EncryptPassword();
+        String          originalPassword = en.generateToken("guojunjun@junjunguo.com");
         System.out.println("Original  password: " + originalPassword);
         String encryptedPassword = en.encrypt(originalPassword);
         System.out.println("Encrypted password: " + encryptedPassword);
         String decryptedPassword = en.decrypt(encryptedPassword);
         System.out.println("Decrypted password: " + decryptedPassword);
+    }
+
+    public String generateToken(String userId) {
+        String token = UUID.randomUUID().toString().toUpperCase() +
+                       "$" + userId +
+                       "$" + System.currentTimeMillis();
+        return token;
     }
 }
