@@ -10,6 +10,7 @@ ISO security architecture definition:
 - **[OAuth.md](OAuth.md)**
 - **[Password.md](password.md)**
 - **[Information Security](infoSec.md)**
+- **[TTM4135](ttm4135.md)**
 
 Traditional definitions of information security are based on three information security goals:
 
@@ -130,6 +131,7 @@ A key tool in information security management
 - A credential is an attestation of qualification, competence, or authority issued to an individual by a third party with a relevant or de facto authority or assumed competence to do so.
     - Examples of credentials include academic diplomas, academic degrees, certifications, security clearances, identification documents, badges, passwords, user names, keys, powers of attorney, and so on.
 - **Digital credentials** are the digital equivalent of paper-based credentials. Just as a paper-based credential could be a passport, a Driver's license, a membership certificate or some kind of ticket to obtain some service, such as a cinema ticket or a public transport ticket, a digital credential is a proof of qualification, competence, or clearance that is attached to a person. Also, digital credentials prove something about their owner. Both types of credentials may contain personal information such as the person's name, birthplace, birthdate, and/or biometric information such as a picture or a finger print.  
+- Access Token contains digital credential for the login session and identifies the user.
 
 ## Transport-level and Application-level Security
 

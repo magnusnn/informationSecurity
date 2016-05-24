@@ -31,6 +31,76 @@ IIS|Microsoft|262,471,886|28.95%|278,593,041|29.83%|0.88
 nginx|NGINX, Inc.|141,443,630|15.60%|137,459,391|16.61%|-0.88
 GWS|Google|20,799,087|2.29%|20,640,058|2.21%|-0.08
 
+## Application Server
+An application server is a software framework that provides both facilities to create **web applications** and a **server** environment to run them.
+
+### Java application servers
+Java Platform, Enterprise Edition or Java EE defines the core set of API and features of Java Application Servers.
+
+#### The Web modules include:
+
+- Java Servlet
+- Java Server Pages **JSP**
+	- executes in a web container.
+	- JSPs provide a way to create HTML pages by embedding references to the server logic within the page.
+- Enterprise JavaBeans
+	- are used to manage transactions.
+
+#### Open source Java application servers that support Java EE:
+
+- **GlassFish** : Oracle GlassFish Server
+	- is the reference implementation of Java EE
+	- supports: 
+		- Enterprise JavaBeans
+		- JPA: Java Persistence API
+		- JavaServer Faces
+		- JMS: Java Message Service API
+		- RMI
+		- JSP
+		- Java Servlet
+		- ...
+	- built on a modular kernel powered by OSGi.
+- **TomEE** : (pronounced 'Tommy')
+	- Java Enterprise Edition of Apache Tomcat
+		- **Tomcat**: 
+			- implements several Java EE specifications including:
+				- Java Servlet
+				- JSP
+				- Java EL
+				- WebSocket
+			- provides pure Java HTTP web server environment in which Java code can run.
+	- TomEE = Tomcat + Java EE 
+	- combines several Java enterprise projects including:	
+		- Apache **Tomcat**:
+			- HTTP server and Servlet container supporting Java Servlet and JSP.
+		- Apache OpenEJB:
+		- Apache OpenWebBeans
+		- Apache OpenJPA
+		- Apache MyFaces
+		- ...
+- ...
+
+
+### .NET Framework
+Microsoft positions their middle-tier applications and services infratructure in the Windows Server operating system and the **.NET Framework** technologies in the role of and application server.
+
+#### The Windows Application Server role includes:
+
+- Internet Information Services **IIS**
+	- to provide web sever support.
+- .NET Framework
+	- to provide application support.
+- ASP.NET
+	- to provide server side scripting
+	- ASP : Active Server Pages
+- COM+
+	- application component communication
+	- **COM+** : Microsoft Component Object Model **COM** and Microsoft Transaction Server **MTS**.
+	- Component Services
+- Message Queuing
+	- multithreaded processing
+- Windows Communication Foundation **WCF**
+	- application communication.
 
 ###Certificate authority
 > **数字证书认证机构 CA** 也称为电子商务认证中心、电子商务认证授权机构，是负责发放和管理数字证书的权威机构，并作为电子商务交易中受信任的第三方，承担公钥体系中公钥的合法性检验的责任。
@@ -60,7 +130,11 @@ GWS|Google|20,799,087|2.29%|20,640,058|2.21%|-0.08
 ####Pretty Good Privacy
 > Pretty Good Privacy (PGP) is a data encryption and decryption computer program that provides cryptographic privacy and authentication for data communication. PGP is often used for signing, encrypting, and decrypting texts, e-mails, files, directories, and whole disk partitions and to increase the security of e-mail communications.[wikipedia: PGP](https://en.wikipedia.org/wiki/Pretty_Good_Privacy)
 
+####GNU Privacy Guard
+> GNU Privacy Guard (GnuPG or GPG) is a free software replacement for PGP.
+> GnuPG is a hybrid-encryption software program because it uses a combination of conventional symmetric-key cryptography for speed, and public-key cryptography for ease of secure key exchange, typically by using the recipient's public key to encrypt a session key which is only used once. This mode of operation is part of the OpenPGP standard and has been part of PGP from its first version.
 
+###
 
 #Reference
  **[Creating and Using SSL Certificates](http://www.eclectica.ca/howto/ssl-cert-    howto.php)**
