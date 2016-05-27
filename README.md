@@ -9,8 +9,8 @@ ISO security architecture definition:
 
 - **[OAuth.md](OAuth.md)**
 - **[Password.md](password.md)**
-- **[Information Security](infoSec.md)**
-- **[TTM4135](ttm4135.md)**
+- **[InforSec: webserver, application server](infoSec.md)**
+- **[TTM4135: InforSec](ttm4135)**
 
 Traditional definitions of information security are based on three information security goals:
 

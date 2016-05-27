@@ -1,6 +1,8 @@
 #Information security 
 **TTM4135**
 
+###### [quiz](ttm4135.md)
+
 ## Classical Encryption
 
 ### Confidentiality and authentication
@@ -60,11 +62,15 @@ In cryptanalysis, attack models or attack types are classification of cryptograp
 	- The attacker can obtain the plaintext equivalent of some ciphertext which can be selected by the attacker
 		- i.e. the attacker has an 'inside decryptor' available. 
 
+### kerckhoffs' Principle
+**The attacker has complete knowledge of the cipher**
+- e.g. the **decryption key** is the only thing unknown to the attacker.
+- History has shown that **Kerckhoffs' Principle** is a reasonable assumption.
+
 ### Basic cipher operations
 Most historical ciphers are based on a combination of two basic operations. Transposition and Substitution.
 
-#### **Transposition**: 
-
+#### Transposition: 
 - the characters in the plaintext are mixed up with each other (permuted).
 - transposition cipher permutes characters usually in a fixed period d and permutation f.
 	-  we can consider the plaintext as a matrix of rows of length d.
@@ -72,23 +78,24 @@ Most historical ciphers are based on a combination of two basic operations. Tran
 - Mathematically a bijective function is used on the characters' positions to encrypt and an inverse function to decrypt. 
 
 ###### Cryptanalysing a transposition cipher
-
 - the frequency distribution of the ciphertext characters is the same as for the plaintext characters. 
 	- this helps to identify a trransposition cipher. 
 
 
-#### **Substitution**:	
-
+#### Substitution:	
 - each character (or set of characters) is replaced by a different character (or set of characters).
 	- as defined by a substitution table. 
-- transposition ciphers permute plaintext characters
+- **transposition** ciphers permute **plaintext characters**
 	- the units of the plaintext are rearranged in a different and usually quite complex order, but the units themselves are left unchanged.
-- substitution ciphers permute alphabet characters. 
+- **substitution** ciphers permute **alphabet characters**. 
 	- the units of the plaintext are retained in the sequence in ciphertext, but the units themselves are altered. 
 
-### Caesar cipher
-A chipher which moves the ith letter of an alphabet to the i+j th letter. The key is the value j.
+### Caesar cipher 
+###### Simple Substitution Ciphers
+- ###### Caesar cipher
+- ###### Random Simple Substitution Cipher
 
+A chipher which moves the ith letter of an alphabet to the i+j th letter. The key is the value j.
 - Encryption Ci = (Ai + j) mod n
 - Decryption Ai = (Ci - j) mod n
 - where n = 26 or n = 27
@@ -101,13 +108,22 @@ A cipher which assigns a random character of the alphabet to another character o
 - Caesar cipher is a special case of the random simple substitution cipher. 
 
 ### Polyalphabetic substituion
-
 - polyalphabetic substitution ciphers use multiple mappings from plaintext to ciphertext.
 - the effect of the multiple alphabets is to smooth the frequency distribution so direct frequency analysis is no longer effective. 
+
+###### Polyalphabetic substitution
+- ###### Vigenere cipher
 
 ### Vigenere cipher
 
 - the vigenere cipher is a popular form of periodic substitution cipher based on shifted alphabets. 
+
+```
+M:          AT-T	HE-T	IME-
+K:          LOCK	LOCK	LOCK
+E(K,M):     LGBC	SSBC	T-GJ
+
+(A=0,...Z=25,-=26) ```
 
 ### Hill cipher
 
@@ -115,29 +131,43 @@ A cipher which assigns a random character of the alphabet to another character o
 	- is a simple substituion cipher on an extended alphabet consisting of multiple characters. 
 - the major weakness of the Hill cipher is that it is linear.
 	- makes known plaintext attacks easy.
+- Encryption involves multiplying a d x d matrix K by the block of plaintext P.
+	- C = KP
+- Decryption involves multiplying the matrix K^(-1) by the block of the ciphertext C.
+	- P = K^(-1)C
 
 ## Block ciphers
+- ###### Block Cipher Principles
+	- ###### Product Ciphers and Iterated Ciphers
+	- ###### Substitution-permutation networks
+	- ###### Feistel Ciphers
+	- ###### Standard security properties
+- ###### DES
+	- ###### history of DES
+	- ###### DES algorithm
+	- ###### Brute Force Attack on DES
+	- ###### Double and triple DES
+- ###### AES
+	- ###### AES History
+	- ###### AES Algorithm
+	- ###### Comparison of AES and DES
 
 Block ciphers are the main bulk encryption algorithms used in commerical applications.
 
 Standardised block cipher AES & legacy cipher DES are widely deployed in real applications.
-
 - Block ciphers are symetric key ciphers in which each block of plaintext is encrypted with the same key. 
 - A block is a set of plaintext symbols of a fixed size. Typical block sizes for modern block ciphers are between 64 and 256 bits. 
 	- a block cipher is a deterministic algorithm operating on fixed-length groups of bits, called blocks.
 
 ### Critria for block cipher design
-
 - **Confusion**: This involves substitution to make the relationship between the key and ciphertext as complex as possible.
 - **Diffusion**: This involves transformations that dissipate the statistical properties of the plaintext across the ciphertext. 
 
 #### Product cipher
-
 - A product cipher is a cryptosystem in which the encryption function is formed by applying (composing) several sub-encryption functions. 
 
 #### Iterated ciphers 
 Most modern **block ciphers** are in a special class of product ciphers known as iterated ciphers. 
-
 - The encryption process is divided into r similar rounds
 - The sub-encryption functions are all the same function, g, called round function. 
 
@@ -212,16 +242,22 @@ key size		|56-bits			|128, 192 or 256 bits
 - AES is the choice of today but triple-DES is still important
 - Design good block ciphers is a difficult and time-consuming process.
 
-### Block cipher Modes of Operation
+## Block cipher Modes of Operation
+- ###### Confidentiality Modes
+	- ###### Electronic Codebook **ECB** Mode
+	- ###### Cipher Block Chaining **CBC** Mode
+	- ###### Counter **CTR** Mode
+- ###### An Authentication Mode **CMAC**
+- ###### An authentication Encryption Mode **CCM**
 
-- Block ciphers are designed to encrypt single blocks o data
-	- In most applications many blocks o data are encrypted sequentially.
+Block Ciphers
+- Block ciphers are designed to encrypt single blocks of data
+	- In most applications many blocks of data are encrypted sequentially.
 - The simple approach is to break up the plaintext into blocks and encrypt each separately.
 	- This is insecure for most applications.
 - Block ciphers can be used to provide **authentication**.
 
 Standards:
-
 - Confidentiality modes:
 	- Electronic Codebook **ECB** Mode
 	- Cipher Block Chaining **CBC** Mode
@@ -230,7 +266,6 @@ Standards:
 - An Authenticated Encryption Mode **CCM**
 
 #### The importance of randomised encryption
-
 - If encryption is deterministic then the same plaintext block is encrypted to the same ciphertext block every time. This allows patterns to be found in long ciphertext.
 - Usually we prefer our encryption schemes to be randomised to prevent this.
 
@@ -253,42 +288,96 @@ Parallel decryption	|yes						|yes				|yes
 	- A basic requirement is uniqueness, which means that no IV may be reused under the same key.
 
 #### Message integrity
-
 - Message integrity is concerned with ensuring that the message is not altered in transmission.
-- We treat message integrity and message authentication as the same thing.
+- We treat message **integrity** and message **authentication** as the same thing.
 - This includes preventing an adversary from reordering, replacing, replicating, or deleting message blocks in order to alter the received message.
 - Message integrity can be provided whether or not encryption is used for confidentiality.
 
-## Pseudorandom Numbers and Stream ciphers
+#### Messge Authentication Code **MAC**
+- used for ensuring message integrity.
+- On input a secret key K and an arbitrary length message M, a MAC algorithm outputs a short fixed-length string
+	- **T = MAC(M, K)**
+	- known as tag.
+- 2 entities A and B share a common key K and A wants to send message M to B.
+	- A computes the tag on the message T = MAC(M, K).
+	- A sends message M in the clear and adjoins the tag T.
+	- B recomputes the tag T' = MAC(M', K) on the received message M' and checks that T' = T.
 
+##### MAC properties
+- **MAC protocol provides sender authentication to the message**, 
+	- since only A or B can produce T from the message.
+- if T' = T, B concludes that the message received M' was sent by A and has not been modified in transit (Either intentionally or accidentally).
+- if T' != T, B must conclude that (M', T) was not sent by A.
+- The basic security property of a MAC is called **unforgeability**:
+	- it is not feasible to produce a message M and a tag T such that T = MAC(M, K) without knowledge of the key K.
+
+### Basic CBC-MAC
+- A block cipher can be used to create a MAC, providing message integrity (but not confidentiality).
+- CBC-MAC is a simple MAC algorithm.
+	- the IV (Initialisation Value) must be fixed and public.
+		- It can be set to all zeros.
+		- CBC-MAC with random IV is not secure.
+	- let P be the message consisting of n blocks.
+	- to compute CBC-MAC(P, k) do:
+		- for t = 1 to n compute Ct = E(Pt + Ct-1, K)
+			- where C0 = IV
+		- output T = Cn as the tag.
+- CBC-MAC is unforgeable as long as the message length is fixed.
+
+### Standardised Cipher-based MAC (**CMAC**)
+- a secure version of CBC-MAC called CMAC (Cipher-based MAC)
+
+
+## Pseudorandom Numbers and Stream ciphers
+- ###### Random numbers
+- ###### Stream ciphers
+- ###### The One Time Pad
+- ###### Linear Feedback Shift Registers **LFSR**
+	- ###### Defining LFSRs
+	- ###### LFSR Keystream Properties
+- ###### Practical Synchronous Stream Ciphers
+	- ###### The A5 Cipher
+	- ###### RC4
+
+Motivation
 - Random values are required in many places in cryptography.
 - For practical reasons pseudorandom deterministic algorithms are often used.
 - Stream ciphers are constructed from (pseudo-) random number generators.
+- Prominent stream ciphers deployed widely include:
+	- the **A5** cipher used in **GSM** mobile phones
+	- the **RC4** cipher used in network applications such as **SSH** and **WEP**.
 
 ### Stream ciphers
-
 - Stream ciphers are characterised by the generation of a keystream using the short key and an initialisation value as input.
 - Each element of the keystream is used successively to encrypt one or more ciphertext characters.
 - Stream ciphers are usually symmetric key ciphers
 	- sender and receiver share the same key and can generate the same keystream given the same initialisation value.
 
+#### Synchronous stream ciphers
+- in the simplest kind of stream cipher the keystream is generated independently of the plaintext.
+	- in this case the cipher is called a synchronous stream cipher.
+- both sender and receiver need to generate the same keystream and synchronise on this usage.
+
 ### One-time pad
 a plaintext is paired with a random secret key (one-time pad). Then each bit or character of the plaintext is encrypted by combining it with the corresponding bit or character from the pad using modular addition. If the key is truly random, and at least as long as the plaintext, is never reused in whole or in part, and is kept completely secret, then the ciphertext will be impossible to decrypt or break.
 
+- The key is a random sequence of characters, all of them independently generated.
+- Each character in the key is used one time only.
 - The one time pad is an example of a (non-periodic) binary synchronous stream cipher.
 - The one time pad provides perfect secrecy.
 
 ### Linear Feedback Shift Registers **LFSR**
-
 - A LFSR is a common component in design of stream ciphers.
-- are simple and fast to implement in hardware nad software and have good pseudorandomness properties.
+- are simple and fast to implement in hardware and software and have good pseudorandomness properties.
 
 ### A5 cipher
-
 - The A5 cipher is a binary synchronous stream cipher applied today in most GSM mobile telephones.
+- The A5/1 design
+	- **algorithm uses three LFSRs whose output is combined**.
+	- the 3 LFSRs are irregularly clocked which means that the overall output is non-linear.
+	- The key length is 64 bits, which define the state vector for each LFSR.
 
 ### RC4
-
 - RC4: Rivest Cipher 4 also known as ARC4 or ARCFOUR meaning Alleged RC4
 	- is a stream cipher.
 	- remarkable for its simplicity and speed in software.
@@ -302,13 +391,18 @@ a plaintext is paired with a random secret key (one-time pad). Then each bit or 
 - the key length is variable of between 1 and 256 bytes.
 
 ##Number Theory for Public Key Cryptography
+- ###### Public Key Cryptography
+- ###### RSA algorithms
+- ###### Implementing RSA
+- ###### Security of RSA
 
 - Number theoretic problems are at the foundation of public key cryptography in use today.
 - we need efficient ways to generate large prime numbers.
 - need to define hard computational problems which we can base our cryptosystems on.
 
-## public key cryptography and RSA
+## Public key cryptography and RSA
 
+public key cryptography
 - public key cryptography provides some features which cannot be achieved with symmetric key cryptography.
 - PKC is widely applied for key management in protocols such as TLS & IPSec.
 - **RSA** is probably the best known public key cryptosystem
@@ -321,8 +415,7 @@ a plaintext is paired with a random secret key (one-time pad). Then each bit or 
 	- who first publicly described the algorithm in 1977.
 - If implemented in a standard way, there are no significant attacks on RSA encryption.
  
-###One way functions
-
+### One way functions
 - A function f is said to be a one way function if it is easy to compute f(x) given x, but is computationally hard to compute f^(-1) (y) = x given y.
 - it is an open problem in computer science  whether any one way function actually exit.
 - two examples of functions believed to be one way are:
@@ -332,14 +425,11 @@ a plaintext is paired with a random secret key (one-time pad). Then each bit or 
 		- the inverse function is taking discrete logarithms.
 
 #### Trapdoor function
-
 a trapdoor function is a function that is easy to compute in one direction, yet difficult to compute in the opposite direction (finding its inverse) without special information, called the "trapdoor".
-
 - **A public key cryptosystem can be designed by using a trapdoor one way function**.
 - **The trapdoor will become the decryption key**.
 
 ### Public and private keys
-
 - Public key cryptography is another name for asymmetric cryptography
 - The encryption and decryption keys are different.
 - The encryption key is a public key which can be known to anybody.
@@ -353,11 +443,117 @@ Public key cryptography has two main advantages in comparison with **shared key*
 	- keys do not need to be transported confidentially.
 - Digital signatures can be obtained.
 
+#### RSA Key Generation
+1. let p, q be distinct prime numbers, randomly chosen from the set of all prime numbers of a certain size.
+2. compute n = pq
+3. select e randomly with gcd(e, 𝟇(n)) = 1
+4. compute d = e^(-1) mod 𝟇(n)
+5. the public key is the pair n and e.
+6. the private key consists of the values p, q and d.
+
+#### RSA operations
+- **Encryption** The public key for encryption is Ke = (n, e)
+	1. Input is any value M where 0 < M < n.
+	2. Compute C = E(M, Ke) = M^e mod n
+- **Decryption** The private key for decryption is Kd = d (values p and q are not used here)
+	1. Compute D(C, Kd) = C^d mod n = M.
+
+```
+p = 11;		
+q = 17; 	
+n = p * q = 187;
+𝟇(n) = (p - 1) * (q - 1) = 10 * 16 = 160
+e    = 7;(random only)
+d    = e^(-1) mod 𝟇(n) = 7^(-1) mod 160 = 23
+
+160 = 7 * 22 + 6
+7   = 1 * 6  + 1
+1   = 7 - 6
+    = 7 - (160 - 7 * 22)
+    = 7 * 23   - 160
+
+7^(-1) mod 160 (is the same as:)
+7 * x                Ξ 1 mod 160  
+7 * x = 7 * 23 = 161 Ξ 1 mod 160
+ 
+public key:  n = 187; e = 7;
+private key: p = 11;  q = 17; d = 23;
+```
+
 #### Generating p and q
 
 The primes p and q should be random of a chosen length. Today this length is usually recommended to be at least 1024 bits.
 
+#### RSA encryption security
+- RSA is often used to distribute a key for symmetric-key encryption (often known as hybrid encryption)
+- RSA can be used for user authentication by proving knowledge of the private key corresponding to an authenticated public key.
+- Standardised padding should always be used before encryption.
+- Factorisation of the modulus is the best known attack against RSA in the case that standardised padding is used.
+- Finding the private key from the public key is as hard as factorising the modulus.
+- It is an open problem whether there is any way of breaking RSA encryption without factorising the modulus.
+
+## Other Public Key Cryptosystems
+- ###### Diffie-Hellman Key Exchange
+	- ###### Protocol 
+	- ###### Properties
+- ###### Elgamal Cryptosystem
+	- ###### Algorithm
+	- ###### Security
+- ###### Elliptic Curves
+- ###### Recent Developments
+
+Motivation
+- discrete log ciphers are currently the main public key alternative to RSA
+- They are widely deployed and standardised.
+- When implemented on elliptic curves they can be more efficient and compact than RSA.
+
+### Diffie-Hellman key exchange
+is a specific method of securely exchanging cryptographic keys over a public channel.
+
+- Designed to allow two users, Alice and Bob, to share a secret using only public communications.
+- Public knowledge:
+	- large prime p
+	- generator g of Zp*
+- Alice and Bob each select random values a and b respectively where 0 < = a, b < = p -1 .
+- Alice sends g^a mod p to Bob 
+	- over an insecure channel
+- Bob sends g^b mod p to Alice 
+	- over an insecure channel
+- Alice and Bob both compute secret key Z 𝞝 g^(a x b) mod p.
+	- The value Z can be used to compute a key for, say, AES.
+	- This is done using a key derivation function based on a public hash function.
+![Diffie Hellman](../doc/img/diffie_hellman.png)
+
+### Security of Diffie-Hellman
+- An attacker who can find discrete logarithms can break the protocol:
+	1. intercept the value g^a mod p and take the discrete log to obtain a.
+	2. compute g^(a x b) in the same way as B.
+- There is no better way known for a passive adversary to break the protocol than by taking discrete logs.
+- It is unknown whether a better way exists.
+
+### Authenticated Diffie-Hellman
+- In basic Diffie-Hellman protocol the messages between Alice and Bob are not authenticated.
+- neither Alice nor Bob knows who the secret Z is shared with unless the messages are authenticated.
+- Various more complex protocols exist,
+	- e.g. adding digital signatures.
+- It is assumed that both parties know each other's public verification keys.
+
+### Elgamal cryptosystem
+- Proposed by Taher Elgamal in 1985.
+- Turns the Diffie-Hellman protocol into a cryptosystem.
+- Alice combines her ephemeral private key with Bob's long-term public key.
+
 ## Hash functions and MACs
+- ###### Hash functions
+	- ###### Security properties
+	- ###### Iterated hash functions
+	- ###### Standardized hash functions
+- ###### Message Authentication Codes **MACs**
+	- ###### MACs from hash functions - **HMAC**
+- ###### Authenticated encryption
+	- ###### Combining encryption and MAC
+	- ###### Galois Counter Mode **GCM**
+
 A hash function H is a public function such that :
 
 - H is simple and fast to compute
@@ -369,27 +565,29 @@ A cryptographic hash function is a mathematical algorithm that maps data of arbi
 
 #### Security properties of hash functions
 A cryptographic hash function must be able to withstand all known types of cryptanalytic attack. At a minimum, it must have the following properties:
+- **Collision resistant:**
+	- it should be infeasible to find any two different values X1 and X2 with H(X1) = H(X2).
+		- H(X1) = H(X2) is called a **Cryptographic hash collision**.
+	- this property is sometimes referred to as strong collision resistance. 
+	- it requires a hash value at least twice as long as that required fo preimage-resistance. 
+		- otherwise collisions may be found by a birthday attack.
+- **Second-preimage resistant**:
+	- Given a value X1 it should be infeasible to find a different value X2 with H(X1) = H(X2).
+- **One-way (a.k.a preimage resistant)**:
+	- given a value y it should be infeasible to find any input x with H(x) = y
+- An attacker who can break second-preimage resistance can also break collision resistance. 
 
-**Collision resistant:**
-
-- it should be infeasible to find any two different values X1 and X2 with H(X1) = H(X2).
-	- H(X1) = H(X2) is called a **Cryptographic hash collision**.
-- this property is sometimes referred to as strong collision resistance. 
-- it requires a hash value at least twice as long as that required fo preimage-resistance. 
-	- otherwise collisions may be found by a birthday attack.
-
-**Second-preimage resistant**:
-
-- Given a value X1 it should be infeasible to find a different value X2 with H(X1) = H(X2).
-
-**One-way (a.k.a preimage resistant)**:
-
-- given a value y it should be infeasible to find any input x with H(x) = y
-
-An attacker who can break second-preimage resistance can also break collision resistance. 
+#### The birthday paradox
+- in a group of 23 randomly chosen people, the probability that at least two have the same birthday is over 0.5.
+- in general, in we choose around √M values from a set of size M, the probability of getting two values the same is around 0.5.
+	- √365 ≈ √361 = 19
+- Suppose a hash function H has an output size of k bits.
+	- if H is regarded as a rando function then 2^(k/2) trials are enough to find a collision with probability around 0.5.
+- Today 2^80 trials would be considered infeasible.
+	- therefore, in order to satisfy collision resistance, hash functions should have output of at least 
+		- 2^(80 x 2) = 160 bits.
 
 #### MDx family
-
 - Deployed family members were MD2, MD4, MD5
 - all have 128-bit output
 - **all of them are broken** (real collisions have been found)
@@ -410,14 +608,12 @@ An attacker who can break second-preimage resistance can also break collision re
 
 ### Uses of hash functions
 
-Hash functions have many uses.
-	
+- Hash functions have many uses.
 	- ( applying a hash function is not encryption)
 	- Hash computation does not depend on a key;
 	- it is not generally possible to go backwards to find the input.
 
-**A common usage of hash functions is for authentication**:
-
+- **A common usage of hash functions is for authentication**:
 	- authenticate the hash of a message to authenticate the message;
 	- building block for message authentication codes (HMAC)
 	- building block for signatures.
@@ -433,16 +629,23 @@ Hash functions have many uses.
 - HMAC is designed to resist length extension attacks (even if H is a Merkle-Damgård hash functions)
 
 ## Digital Signatures and Certificates
+- ###### Digital Signature Properties
+- ###### RSA Signatures
+- ###### Discrete Logarithm Signatures
+	- ###### Elgamal Signatures
+	- ###### Digital Signature Standard
+- ###### Certificates and PKI
 
+Motivation
 - obtaining digital signatures is one of the major benefits of public key cryptosystems.
 - In some countries digital signatures are legally binding in the same way as handwritten signatures.
 - Digital signature are deployed widely to provide digital certificates as part of public key infrastructures.
 
 ### Confidentiality and Authentication
-
 - Message Authentication Code (MACs) allow only an entity with the shared secret to generate a valid MAC tag.
 	- this provides data integrity and data authentication.
-- Digital signatures use public key cryptography to provide the properties of a MAC and more. Only the owner of the private key can generate a correct digital signature. 
+- Digital signatures use public key cryptography to provide the properties of a MAC and more. 
+	- **Only the owner of the private key can generate a correct digital signature**.
 - Digital signatures provide the non-repudiation security service.
 	- A judge can decide which part formed the signature.
 
@@ -455,34 +658,37 @@ Hash functions have many uses.
 	- a private signature generation key or simply signing key, Ks;
 	- a public signature verification key, Kv.
 
-**Signature generation algorithm**
-
+#### **Signature generation algorithm**
 - Signature s = Sig(m, Ks)
 	- m:	message
 	- Ks:	private signing key
 - only the owner of the signing key should be able to generate a valid signature.
 - the set of all signatures is usually a set of fixed size.
 
-**Signature verification algorithm**
-
+#### **Signature verification algorithm**
 - A boolean value Ver(m, s, Kv) = true or false
 	- m:	message
 	- Kv:	public verification key.
 	- s:	the claimed signature
 - anyone should be able to use the signature verification key to verify a valid signature.
 
-**Security goals**
+#### Properties required of verifying function
+- **Correctness**
+	- if s = Sig(m, Ks) then Ver(m, s, Kv) = true, 
+	- for any matching signing / verification keys.
+- **Unforgeability**
+	- it is computationally infeasible for anyone without Ks to construct m and s such that Ver(m, s, Kv) = true;
 
+#### **Security goals**
 An attacker may try to break a digital signature scheme in serveral ways.
 
 - **Key recovery**:	The attacker attempts to recover the private signing key from the public verification key and some known signatures.
 - **Selective forgery**	The attacker chooses a message and attempts to obtain a signature on that message.
 - **Existential forgery**	The attacker attempts to forge a signature on any message not previously signed. It could be a meaningless message.
-- Modern digital signatures are considered secure only if they can rsist existential forgery under a chosen message attack.
+- Modern digital signatures are considered secure only if they can resist existential forgery under a chosen message attack.
 
 #### RSA signatures - key generation
 RSA signature keys are generated in the same way as RSA encryption keys.
-
 - Public verification key is e, n where n = pq for large primes p and q.
 - Private signing key is d with ed mod ø(n) = 1.
 
@@ -565,7 +771,7 @@ a hash function h is also required and should be fixed public parameter of the s
 
 #### Extended validation certificates
 
-![validation crtificates](doc/img/extended_validation_certificates.png)
+![validation crtificates](../doc/img/extended_validation_certificates.png)
 
 - Browser indication, usually a colour in the address bar, that certificate has been issued at a specified level.
 - Agreement between browsers developers and CAs.
@@ -573,7 +779,16 @@ a hash function h is also required and should be fixed public parameter of the s
 - Surveys have shown that extended validation certificates are mostly ignored by users.
 
 ## Key Establishment and User Authentication
+- ###### Key Establishment
+	- ###### Key Pre-distribution (pre-shared keys)
+	- ###### Session Key distribution using Symmetric Keys
+	- ###### Session Key distribution using Asymmetric Keys
+	- ###### Key agreement
+- ###### Session key distribution using symmetric keys
+	- ###### Needham-Schroeder protocol 
+	- ###### kerberos
 
+Motiviation
 - Authentication is an essential initial step in providing services to users.
 - Authentication is often combined with distribution of a cryptographic key to protect the following communication session.
 - **Kerberos** is a widely-used authentication solution which does not rely on PKI.
@@ -603,8 +818,7 @@ Keys are often organized in a hierarchy. A simple two-level hierarchy is common.
 		- e.g. with authenticated encryption.
 
 ### Key establishment
-
-- In practice session keys are usually symmetric keys used with ciphers such as AES and MACs because of their greater efficiency over public key algorithms.
+- In practice **session** keys are usually symmetric keys used with ciphers such as AES and MACs because of their greater efficiency over public key algorithms.
 - Long-term keys can be either symmetric or asymmetric keys depending on how they are used.
 - We need a way of establishing secret session keys among communicating parties using the long-term keys.
 - Three common approaches are:
@@ -614,7 +828,6 @@ Keys are often organized in a hierarchy. A simple two-level hierarchy is common.
 
 ### Security goals of key distribution
 The security of key distribution protocols is defined by two properties.
-
 - **authentication**
 	- if a party completes the protocol and believes that the key is shared with party B then it should not be the case that the key is actually shared with a different party C
 - **Confidentiality** 
@@ -622,38 +835,34 @@ The security of key distribution protocols is defined by two properties.
 - in formal models we usually regard the protocol as broken if the adversary can distinguish the session key from a random string.
 
 ### Mutual and unilateral authentication
-
 - if both parties achieve the authentication goal then we say that the protocol provides mutual authentication.
-- if only one party achieves the authentication goal then we say that the protocaol provides unilateral authentication.
+- if only one party achieves the authentication goal then we say that the protocol provides unilateral authentication.
 - Many real-world key establishment protocols achieve only unilateral authentication.
 	- typically clients are able to authenticate servers.
 	- client authentication often happens later, protected with the established key.
 
 ### Adversary capabilities in key distribution
 When considering the security of key distribution protocols, we typically assume a strong adversary that knows the details of the cryptographic algorithm involved and is able to:
-
 - eavesdrop on all message sent in a protocol;
 - alter all messages sent in a protocol using any information available to him;
 - re-route any message (including new messages) to any other user;
 - obtain the value of the session key Kab used in any previous run of the protocol.
 
 ### Key pre-distribution (pre-shared keys)
-
-- A trusted authority (TA) generates and distributes long-term keys to all users when they join the system.
+- A **Trusted Authority** (**TA**) generates and distributes long-term keys to all users when they join the system.
 - The simplest scheme assigns a secret key for each pair of users but then number of keys grows quadratically.
 - The TA only operates in the pre-distribution phase and need not be online afterwards.
 - Poor scalability.
 - Probabilistic schemes exist that reduce the keying material at each party, but only guarantee a secure channel between any two parties with some (high) probability. Suitable for sensor networks.
 
 ### Session key distribution with an online server
-
 - The trusted authority shares a long-term shared key with each user, which is employed to distribute session keys.
-- An online trusted authority generates and distributes session keys to users when requested to do so using the long-term keys to do this securely.
+- **An online trusted authority generates and distributes session keys to users**
+	-  when requested to do so using the long-term keys to do this securely.
 - The TA is highly trusted and is a single point of attack. The security of the whole network depends on it.
 - Scalability can be a problem.
 
 ### Key distribution using asymmetic cryptography
-
 - No online trusted authority is required.
 - Public keys are used for authentication.
 - PKI (Certificates and CAs) are usually required to manage the public keys.
@@ -661,20 +870,21 @@ When considering the security of key distribution protocols, we typically assume
 - Two different types are key transport and key agreement.
 
 ### Key transport with asymmetric cryptography
-
 - One user chooses key material and sends it encrypted to the other party.
 - In some cases the message can be signed by the sender as well as encrypted for the recipient.
 - TLS includes options for this type of key distribution.
 - Cannot provide forward secrecy.
 
 ### Key agreement
-
 - Two parties each provide input to the keying material.
 - Usually provide authentication with public keys, for example by signing the exchanged messages.
 - Diffie-Hellman protocol is a widely used key agreement protocol.
 - TLS includes options for this type of key distribution too.
 
 ### Forward secrecy
+also known as perfect forward secrecy: is a property of secure communication protocols in which compromise of long-term keys does not compromise past session keys.
+
+Forward secrecy protects past sessions against future compromises of secret keys or passwords.
 
 - What happens when a long-term key is compromised ?
 - The attacker can now act as the owner of the long-term key.
@@ -684,7 +894,7 @@ A key agreement protocol provides (perfect) forward secrecy if compromise of lon
 
 ### Needham-Schroeder protocol
 
-![Needham Schroeder protocol](doc/img/needham_schroeder_protocol.png)
+![Needham Schroeder protocol](../doc/img/needham_schroeder_protocol.png)
 
 The Needham-Schroeder protocol is one of the most widely known key establishment protocols.
 
@@ -693,7 +903,6 @@ The Needham-Schroeder protocol is one of the most widely known key establishment
 - Unfortunately it is vulnerable to an attack to Denning and Sacco in 1981.
 
 ### Tickets
-
 - Consider entity A as a client who wishes to obtain access to the server B.
 	- The authentication server S issues a ticket to allow A to obtain access.
 - A ticket has the format {Kab, IDa, IDb, Tb}Kbs where Tb is a timestamp which we can also interpret as a validity period.
@@ -701,22 +910,19 @@ The Needham-Schroeder protocol is one of the most widely known key establishment
 
 **Repaired Needham-Schroeder using ticket**
 
-![repaired needham-shcroeder](doc/img/repaired_needham_schroeder_ticket.png)
+![repaired needham-shcroeder](../doc/img/repaired_needham_schroeder_ticket.png)
 
 ### Kerberos
-
 - Kerberos was developed at Massachusetts Institute of Technology.
 - From Windows 2000, Kerberos V5 became the default Windows domain authentication method.
 
 ### kerberos goals
-
-- Secure network authentication service in an insecure network environment.
+- **Secure network authentication service in an insecure network environment**.
 - A single sign-on (SSO) solution: users only need to enter usernames and passwords once for a session.
 - Provide access selectively for a number of different online services using individual tickets.
 - Establish session key to deliver confidendiality and integrity services for each service access.
 
 ### Kerberos three level protocol
-
 1. level 1: Client C interacts with authentication server AS in order to obtain a ticket-granting ticket.
 	- this happens once for a session (maybe a working day)
 2. level 2: Client C interacts with ticket-granting server TGS in order to obtain a service ticket.
@@ -736,11 +942,22 @@ The user only authenticates once at the start of the session.
 - Kerberos standard does not specify how to use the session key once it is established.
 
 ## The Transport Layer Security (**TSL**) Protocol 
+- ###### TLS
+	- ###### history and overview
+	- ###### TLS Record Protocol
+	- ###### TLS handshake Protocol
+- ###### Attacks on TLS
 
-- TLS is probably the most widely used security protocol in use today in the real world.
+Motivation
+- **TLS** is probably the **most widely used security protocol** in use today in the real world.
 - TLS is used to secure communications with banks, online shops, email provides and much more.
 - TLS uses most of the mainstream cryptographic algorithms which we have studied in this course.
 - TLS is a very complex protocol and has been the subject of many attacks, and subsequent repairs.
+
+**Transport Layer Security**:
+
+![Transport Layer Security](../doc/img/tls.png)
+
 
 ### **SSL/TLS** history
 
@@ -768,9 +985,9 @@ The user only authenticates once at the start of the session.
 
 - Designed to secure reliable end to end services over TCP
 - Consists of 3 higher level protocols:
-	- TLS handshake protocol to set up sessions
-	- TLS alert protocol to signal events such as failures 
-	- TLS change ciper spec protocol to change the cryptographic algorithms
+	- TLS **handshake protocol** to set up sessions
+	- TLS **alert protocol** to signal events such as failures 
+	- TLS **change ciper spec protocol** to change the cryptographic algorithms
 - The TLS record protocol provides basic services to various higher level protocols.
 
 TLS: Protocol stack
@@ -882,8 +1099,8 @@ Encrypted	|Plaintext optionally compressed		|
 	- When the client does not have a certificate (usual on the Internet) then the client uses an ephemeral Diffie-Hellman key.
 - **Ephemeral Diffie-Hellman** DHE:
 	- Both parties use ephemeral Diffie-Hellman keys which should be signed (often only by the server).
-	- The Diffie-Hellman cna also be performed on elliptic curves (ECDHE). 
-	- The only version of TLS which provides forward secrecy.
+	- The Diffie-Hellman can also be performed on elliptic curves (ECDHE). 
+	- The **only version of TLS which provides forward secrecy**.
 - **Anonymous Diffie-Hellman** DH_Anon:
 	- The ephemeral Diffie-Hellman keys are not signed at all. This only protects against passive eavesdropping.
 
@@ -938,8 +1155,127 @@ Encrypted	|Plaintext optionally compressed		|
 - Several examples of the principle that 'attacks only get better' over time.
 - However, all known attacks have been patched and we now have security proofs for large parts of TLS.
 
+## Email Security and IPsec
+- ###### Email Security
+	- ###### Email Security REquirements
+	- ###### Link Security
+	- ###### End-to-End Security
+		- ###### GPG
+		- ###### S/MIME
+- ###### IP Layer Security (**IPsec**)
+	- ###### IPsec Architectures
+	- ###### IPsec Protocols
+	- ###### IPsec Modes
+
+Motivation
+- Email remains one of the ost widely used forms of electronic communication but is often sent without andy security.
+- Internet Protocol security is a framework for ensuring secure communications over Internet Protocol (IP) networks.
+- Both are examples of widely used network protocols employing modern cryptography for security.
+
+**Network Models**:
+
+![network models](../doc/img/network_models.png)
+
+**Network OSI model**:
+
+![osi model](../doc/img/network_osi_model.png)
+
+### Email architecture
+- Message user agent (**MUA**) connects client to mail system.
+	- uses **SMTP** (Message Transfer Protocol) to send mail to message submission agent (**MSA**) 
+	- and **POP** (Post Office Protocol) or **IMAP** to retrieve mail from message store (**MS**).
+- Message handling system (**MHS**) transfers message from **MSA** to **MS** via one or more message transfer agent (**MTA**).
+- Simple message transfer protocol (**SMTP**) is mail transmission protocol defined in RFC 5321.
+
+### Pretty Good Privacy **PGP**
+
+> provides cryptographic privacy and authentication for data communication.
+
+> PGP is often used for signing, encrypting, and decrypting texts, emails, files, directories, and whole disk partitions and to increase the security of e-mail communications.
+
+#### PGP encryption
+- Session keys are encrypted using asymmetric encryption.
+- Encryption of message text using symmetric key encryption.
+- Compression is applied before encryption.
+- Encryption can be applied independently of signing.
+	- no requirement for authenticated encryption.
+
+#### PGP signatures
+- Plaintext message is optionally signed with sender's private key.
+- OpenPGP standard requires support for RSA signatures.
+- DSA signatures also defined.
+- RSA signed messages are hashed with SHA1 or other SHA2 hash functions.
+
+#### public keys in PGP: **web of trust**
+- users generate their own public / private key pairs.
+- public keys are available on distributed key servers.
+- any PGP user can sign another user's public key, indicating their level of trust.
+- users can revoke their own keys by signing a revocation certificate with the revoked key.
+
+### S/MIME
+- Similar security features to PGP but different format for messages and hot interoperable.
+- Requires X.509 format certificates instead of web of trust.
+- Supported by most popular mail clients.
+
+### IPsec
+
+**IPsec**: Internet Protocol Security is a protocol suite for secure Internet Protocol communications by authenticating and encrypting each IP packet of a communication session.
+- Provides protection for any higher layer protocol, including arbitrary TCP and UDP sessions.
+- Uses encryption, authentication and key management algorithms.
+- Most commonly used to provide Virtual Private Networks (**VPNs**).
+- Provides a security architecture for both IPv4 and IPv6.
+
+#### Security services 
+- **Message confidentiality**
+	- Protects against unauthorised data disclosure.
+	- Accomplished by the use of encryption mechanisms.
+- **Message Integrity**
+	- IPsec can determine if data has been changed (intentionally or unintentionally) by using a message authentication code (MAC).
+- **Limited traffic analysis protection**
+	- A person monitoring network traffic can find it difficult to know which parties are communicating, how often, or how much data is being sent.
+	- Provided by concealing IP datagram details such as source and destination address.
+- **Message replay protection**
+	- The same data is not delivered multiple times, and data is not delivered badly out of order.
+- **Peer authentication**
+	- each IPsec endpoint confirms the identity of the other IPsec endpoint with which it wishes to communicate.
+	- Ensures that network traffic is being sent from the expected host.
+
+#### Gateway-to-gateway architecture
+- provides secure network communications between two networks
+- Network traffic is routed through the IPsec connection, protecting it appropriately.
+- Only protects data between the two gateways.
+- most often used when connecting two secured networks,
+	- such as linking a branch office to headquarters over the internet.
+- Can be less costly than private wide area network (WAN) circuits.
+
+#### Host-to-gateway architecture
+- commonly used to provide secure remote access.
+- the organization deploys a virtual private network (VPN) gateway onto their network.
+- each remote access user establishes a VPN connection between the local computer (host) and the gateway.
+- VPN gateway may be a dedicated device or part of another network device.
+- Most often used when connecting hosts on unsecured networks to resources on secured networks.
+
+#### Host-to-host architecture
+- typically used for special purpose needs, such as system administrators performing remote management of a single server.
+- Only model that provides protection for data throughout its transit (end to end).
+- resource intensive to implement and maintain in terms of user and host management.
+- all user systems and serers that will participate in VPNs need to have VPN software installed and / or configured.
+- Key management is often accomplished through a manual process.
+
+#### IPsec protocol types 
+- **Encapsulating Security Payload (ESP)**
+	- Can provide:
+		- confidentiality
+		- authentication
+		- integrity
+		- replay protection
+- **Authentication Header (AH)**
+	- Authentication, integrity and replay protection,
+	- but **no** confidentiality and is now deprecated.
+- **Internet Key Exchange (IKE)**
+	- negotiate, create, and manage session keys in so-called security associations.
+
 
 ## References
-
 - [Wikipedia](en.wikipedia.org)
 - [Information Security: TTM5135 : sliders from professor: Colin Alexander Boyd](https://www.ntnu.no/studier/emner/TTM4135#tab=omEmnet)

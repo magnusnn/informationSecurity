@@ -134,7 +134,8 @@ Microsoft positions their middle-tier applications and services infratructure in
 > GNU Privacy Guard (GnuPG or GPG) is a free software replacement for PGP.
 > GnuPG is a hybrid-encryption software program because it uses a combination of conventional symmetric-key cryptography for speed, and public-key cryptography for ease of secure key exchange, typically by using the recipient's public key to encrypt a session key which is only used once. This mode of operation is part of the OpenPGP standard and has been part of PGP from its first version.
 
-###
 
-#Reference
- **[Creating and Using SSL Certificates](http://www.eclectica.ca/howto/ssl-cert-    howto.php)**
+
+##Reference
+- **[Creating and Using SSL Certificates](http://www.eclectica.ca/howto/ssl-cert-howto.php)**
+- [wikipedia]
