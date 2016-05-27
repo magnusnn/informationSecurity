@@ -115,15 +115,15 @@ A cipher which assigns a random character of the alphabet to another character o
 - ###### Vigenere cipher
 
 ### Vigenere cipher
-
-- the vigenere cipher is a popular form of periodic substitution cipher based on shifted alphabets. 
+the vigenere cipher is a popular form of periodic substitution cipher based on shifted alphabets. 
 
 ```
 M:          AT-T	HE-T	IME-
 K:          LOCK	LOCK	LOCK
 E(K,M):     LGBC	SSBC	T-GJ
-
-(A=0,...Z=25,-=26) ```
+//
+(A=0,...Z=25,-=26) 
+```
 
 ### Hill cipher
 
@@ -390,7 +390,7 @@ a plaintext is paired with a random secret key (one-time pad). Then each bit or 
 - Ciphertext word = Plaintext word + Keystream word.
 - the key length is variable of between 1 and 256 bytes.
 
-##Number Theory for Public Key Cryptography
+## Number Theory for Public Key Cryptography
 - ###### Public Key Cryptography
 - ###### RSA algorithms
 - ###### Implementing RSA
@@ -465,20 +465,21 @@ n = p * q = 187;
 𝟇(n) = (p - 1) * (q - 1) = 10 * 16 = 160
 e    = 7;(random only)
 d    = e^(-1) mod 𝟇(n) = 7^(-1) mod 160 = 23
-
+//
 160 = 7 * 22 + 6
 7   = 1 * 6  + 1
 1   = 7 - 6
     = 7 - (160 - 7 * 22)
     = 7 * 23   - 160
-
+//
 7^(-1) mod 160 (is the same as:)
 7 * x                Ξ 1 mod 160  
 7 * x = 7 * 23 = 161 Ξ 1 mod 160
- 
+//
 public key:  n = 187; e = 7;
 private key: p = 11;  q = 17; d = 23;
 ```
+
 
 #### Generating p and q
 
@@ -493,6 +494,7 @@ The primes p and q should be random of a chosen length. Today this length is usu
 - It is an open problem whether there is any way of breaking RSA encryption without factorising the modulus.
 
 ## Other Public Key Cryptosystems
+
 - ###### Diffie-Hellman Key Exchange
 	- ###### Protocol 
 	- ###### Properties
